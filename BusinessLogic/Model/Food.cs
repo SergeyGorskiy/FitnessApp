@@ -1,5 +1,8 @@
-﻿namespace BusinessLogic.Model
+﻿using System;
+
+namespace BusinessLogic.Model
 {
+    [Serializable]
     public class Food
     {
         public string Name { get; }

@@ -14,7 +14,6 @@ namespace BusinessLogic.Model
         {
             get { return DateTime.Now.Year - BirthDate.Year; }
         }
-
         public User(string name, Gender gender, DateTime birthDate, double weight, double height)
         {
             #region Проверка условий
@@ -39,14 +38,12 @@ namespace BusinessLogic.Model
                 throw new ArgumentException("Рост не может быть меньше либо равен 0.", nameof(height));
             }
             #endregion
-
             Name = name;
             Gender = gender;
             BirthDate = birthDate;
             Weight = weight;
             Height = height;
         }
-
         public User(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -56,7 +53,6 @@ namespace BusinessLogic.Model
 
             Name = name;
         }
-
         public override string ToString()
         {
             return Name + " " + Age;
