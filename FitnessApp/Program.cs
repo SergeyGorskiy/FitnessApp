@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using BusinessLogic.Controller;
 using BusinessLogic.Model;
+using FitnessApp.Languages;
 
 namespace FitnessApp
 {
@@ -12,9 +16,13 @@ namespace FitnessApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Вас приветствует приложение FitnessApp!");
+            var culture = CultureInfo.CreateSpecificCulture("ru-ru");
+            var resourceManager = new ResourceManager
+                ("FitnessApp.Languages.Messages", typeof(Program).Assembly);
+            
+            Console.WriteLine(resourceManager.GetString("Hello", culture));
 
-            Console.WriteLine("Введите имя пользователя: ");
+            Console.WriteLine(resourceManager.GetString("EnterName", culture));
             var userName = Console.ReadLine();
 
             var userController = new UserController(userName);
@@ -22,7 +30,7 @@ namespace FitnessApp
 
             if (userController.IsNewUser)
             {
-                Console.Write("Введите пол: ");
+                Console.Write(resourceManager.GetString("EnterGender", culture));
                 var gender = Console.ReadLine();
 
                 var birthDate = ParseDateTime();
