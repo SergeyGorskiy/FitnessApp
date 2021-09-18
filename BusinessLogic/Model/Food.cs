@@ -5,11 +5,12 @@ namespace BusinessLogic.Model
     [Serializable]
     public class Food
     {
-        public string Name { get; }
-        public double Proteins { get; }
-        public double Fats { get; }
-        public double Carbohydrates { get; }
-        public double Calories { get; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double Proteins { get; set; }
+        public double Fats { get; set; }
+        public double Carbohydrates { get; set; }
+        public double Calories { get; set; }
         private double CaloriesOnGram => Calories / 100.0;
         private double ProteinsOnGram => Proteins / 100.0;
         private double FatsOnGram => Fats / 100.0;

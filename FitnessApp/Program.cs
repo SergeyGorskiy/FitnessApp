@@ -27,7 +27,7 @@ namespace FitnessApp
 
             var userController = new UserController(userName);
             var eatingController = new EatingController(userController.CurrentUser);
-            var exersiseController = new ExerciseController(userController.CurrentUser);
+            var exerсiseController = new ExerciseController(userController.CurrentUser);
 
             if (userController.IsNewUser)
             {
@@ -41,7 +41,6 @@ namespace FitnessApp
                 userController.SetNewUserData(gender, birthDate, weight, height);
             }
             Console.WriteLine(userController.CurrentUser);
-
 
             while (true)
             {
@@ -65,8 +64,8 @@ namespace FitnessApp
                         break;
                     case ConsoleKey.A:
                         var exe = EnterExersise();
-                        exersiseController.Add(exe.Activity, exe.Begin, exe.End);
-                        foreach (var item in exersiseController.Exercises)
+                        exerсiseController.Add(exe.Activity, exe.Begin, exe.End);
+                        foreach (var item in exerсiseController.Exercises)
                         {
                             Console.WriteLine($"\t{item.Activity} с {item.Start.ToShortTimeString()} до {item.Finish.ToShortTimeString()}");
                         }

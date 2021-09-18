@@ -5,8 +5,9 @@ namespace BusinessLogic.Model
     [Serializable]
     public class Activity
     {
-        public string Name { get; }
-        public double CaloriesPerMinute { get; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double CaloriesPerMinute { get; set; }
 
         public Activity(string name, double caloriesPerMinute)
         {
