@@ -1,8 +1,10 @@
-﻿namespace BusinessLogic.Controller
+﻿using System.Collections.Generic;
+
+namespace BusinessLogic.Controller
 {
-    public interface IDataSaver
+    public interface IDataSaver<T> where T : class
     {
-        void Save(string fileName, object item);
-        T Load<T>(string fileName);
+        void Save(T item);
+        List<T> Load();
     }
 }
