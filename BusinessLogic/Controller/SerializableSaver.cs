@@ -1,26 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace BusinessLogic.Controller
 {
-    public class SerializeDataSaver<T> : IDataSaver<T> where T:class
+    public class SerializableSaver : IDataSaver
     {
         
-        public void Save(T item)
+        public void Save<T>(List<T> item) where T : class
         {
             var formatter = new BinaryFormatter();
-            var fileName = typeof(T) + ".dat";
+            var fileName = typeof(T).Name;
+
             using (var fs = new FileStream(fileName, FileMode.OpenOrCreate))
             {
                 formatter.Serialize(fs, item);
             }
         }
-
-        public List<T> Load()
+        public List<T> Load<T>() where T : class
         {
             var formatter = new BinaryFormatter();
-            var fileName = typeof(T) + ".dat";
+            var fileName = typeof(T).Name;
+
             using (var fs = new FileStream(fileName, FileMode.OpenOrCreate))
             {
                 if (fs.Length > 0 && formatter.Deserialize(fs) is List<T> items)

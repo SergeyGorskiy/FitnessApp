@@ -8,6 +8,7 @@ namespace BusinessLogic.Model
         public int Id { get; set; }
         public string Name { get; set; }
 
+        public Gender() { }
         public Gender(string name)
         {
             if (string.IsNullOrWhiteSpace(name))

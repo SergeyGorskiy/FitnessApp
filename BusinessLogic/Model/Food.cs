@@ -16,6 +16,7 @@ namespace BusinessLogic.Model
         private double FatsOnGram => Fats / 100.0;
         private double CarbohydratesOnGram => Carbohydrates / 100.0;
 
+        public Food() { }
         public Food(string name) : this(name, 0,0,0,0) { }
 
         public Food(string name, double proteins, double fats, double carbohydrates, double calories)

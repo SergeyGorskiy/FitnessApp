@@ -13,6 +13,8 @@ namespace BusinessLogic.Model
         public int UserID { get; set; }
         public virtual User User { get; set; }
 
+        public Eating() { }
+
         public Eating(User user)
         {
 

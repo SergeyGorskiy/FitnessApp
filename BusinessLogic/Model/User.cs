@@ -11,10 +11,9 @@ namespace BusinessLogic.Model
         public DateTime BirthDate { get; set; }
         public double Weight { get; set; }
         public double Height { get; set; }
-        public int Age
-        {
-            get { return DateTime.Now.Year - BirthDate.Year; }
-        }
+        public int Age => DateTime.Now.Year - BirthDate.Year;
+
+        public User() { }
         public User(string name, Gender gender, DateTime birthDate, double weight, double height)
         {
             #region Проверка условий

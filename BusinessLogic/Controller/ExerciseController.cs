@@ -5,12 +5,10 @@ using BusinessLogic.Model;
 
 namespace BusinessLogic.Controller
 {
-    public class ExerciseController : ControllerBase<Exercise>
+    public class ExerciseController : ControllerBase
     {
         private readonly User _user;
         public List<Exercise> Exercises { get; }
-        private const string EXERCISES_FILE_NAME = "exercises.dat";
-        private const string ACTIVITIES_FILE_NAME = "activities.dat";
         public List<Activity> Activities { get; }
         public ExerciseController(User user)
         {
@@ -21,7 +19,7 @@ namespace BusinessLogic.Controller
 
         private List<Activity> GetAllActivities()
         {
-            return new List<Activity>();
+            return Load<Activity>() ?? new List<Activity>();
         }
 
         public void Add(Activity activity, DateTime begin, DateTime end)
@@ -42,12 +40,13 @@ namespace BusinessLogic.Controller
         }
         private List<Exercise> GetAllExercises()
         {
-            return new List<Exercise>();
+            return Load<Exercise>() ?? new List<Exercise>();
         }
 
         private void Save()
         {
-            
+            Save(Exercises);
+            Save(Activities);
         }
     }
 }

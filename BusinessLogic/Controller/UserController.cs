@@ -8,9 +8,8 @@ using BusinessLogic.Model;
 
 namespace BusinessLogic.Controller
 {
-    public class UserController : ControllerBase<User>
+    public class UserController : ControllerBase
     {
-        private const string USERS_FILE_NAME = "users.dat";
         public List<User> Users { get; }
         public User CurrentUser { get; }
         public bool IsNewUser { get; } = false;
@@ -32,7 +31,7 @@ namespace BusinessLogic.Controller
         }
         private List<User> GetUsersData()
         {
-            return new List<User>();
+            return Load<User>() ?? new List<User>();
         }
 
         public void SetNewUserData(string genderName, DateTime birthDate, double weight = 1, double height = 1)
@@ -46,7 +45,7 @@ namespace BusinessLogic.Controller
         }
         public void Save()
         {
-            
+            Save(Users);
         }
         
     }
